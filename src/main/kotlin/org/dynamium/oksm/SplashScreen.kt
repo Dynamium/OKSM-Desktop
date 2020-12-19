@@ -2,14 +2,12 @@
 
 package org.dynamium.oksm
 
-import androidx.compose.desktop.AppManager
 import androidx.compose.desktop.Window
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.LinearProgressIndicator
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -21,6 +19,7 @@ import androidx.compose.ui.unit.dp
     progressState: MutableState<Float>
 ) {
     Window(
+        title = "OKSM is loading...",
         size = IntSize(500, 300),
         undecorated = true
     ) {
