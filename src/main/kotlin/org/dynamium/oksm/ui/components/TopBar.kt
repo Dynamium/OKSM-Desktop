@@ -17,6 +17,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.res.vectorXmlResource
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.zIndex
 import org.dynamium.oksm.ui.icons.Merge
 import org.dynamium.oksm.ui.icons.Save
 
@@ -26,7 +27,8 @@ fun TopBar() {
         Modifier
             .fillMaxWidth()
             .height(48.dp)
-            .shadow(8.dp),
+            .shadow(8.dp)
+            .zIndex(1.1F),
         color = Color.White
     ) {
         Row(
