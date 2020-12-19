@@ -1,7 +1,6 @@
 @file:Suppress("FunctionName")
 
-package org.dynamium.oksm
-
+package org.dynamium.oksm.ui.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
@@ -18,15 +17,11 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.res.vectorXmlResource
 import androidx.compose.ui.unit.dp
-import org.dynamium.oksm.icons.Save
+import org.dynamium.oksm.ui.icons.Merge
+import org.dynamium.oksm.ui.icons.Save
 
 @Composable
-fun MainScreen() {
-    TopBar()
-}
-
-@Composable
-private fun TopBar() {
+fun TopBar() {
     Surface(
         Modifier
             .fillMaxWidth()
@@ -88,7 +83,8 @@ private fun TopBar() {
                             Icon(
                                 modifier = Modifier
                                     .padding(bottom = 3.dp),
-                                imageVector = vectorXmlResource("drawables/topbar/ic_path_cut.xml"))
+                                imageVector = vectorXmlResource("drawables/topbar/ic_path_cut.xml")
+                            )
                             Text(
                                 modifier = Modifier
                                     .padding(start = 8.dp),
@@ -101,7 +97,18 @@ private fun TopBar() {
 
                         }
                     ) {
-                        Text("Merge two connected lines into one")
+                        Row {
+                            Icon(
+                                modifier = Modifier
+                                    .padding(bottom = 3.dp),
+                                imageVector = Icons.Outlined.Merge
+                            )
+                            Text(
+                                modifier = Modifier
+                                    .padding(start = 8.dp),
+                                text = "Merge two connected lines into one"
+                            )
+                        }
                     }
                 }
             }

@@ -1,6 +1,6 @@
 @file:Suppress("FunctionName")
 
-package org.dynamium.oksm
+package org.dynamium.oksm.ui.screens
 
 import androidx.compose.desktop.Window
 import androidx.compose.foundation.Image

@@ -3,6 +3,8 @@ package org.dynamium.oksm
 import androidx.compose.desktop.Window
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.unit.IntSize
+import org.dynamium.oksm.ui.screens.MainScreen
+import org.dynamium.oksm.ui.screens.SplashScreen
 
 fun main() {
     Window(
