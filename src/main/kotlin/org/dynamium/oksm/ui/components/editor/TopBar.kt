@@ -19,7 +19,9 @@ import androidx.compose.ui.res.vectorXmlResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.zIndex
 import org.dynamium.oksm.ui.icons.Merge
+import org.dynamium.oksm.ui.icons.Redo
 import org.dynamium.oksm.ui.icons.Save
+import org.dynamium.oksm.ui.icons.Undo
 
 @Composable
 fun TopBar() {
@@ -45,12 +47,34 @@ fun TopBar() {
                         .height(32.dp)
                 )
                 IconButton(
+                    modifier = Modifier
+                        .padding(end = 16.dp),
                     onClick = {
 
                     }
                 ) {
                     Icon(Icons.Outlined.Save)
                 }
+
+                IconButton(
+                    onClick = {
+
+                    }
+                ) {
+                    Icon(Icons.Outlined.Undo)
+                }
+                IconButton(
+                    onClick = {
+
+                    }
+                ) {
+                    Icon(Icons.Outlined.Redo)
+                }
+
+            }
+
+            // End controls
+            Row {
 
                 val areDropdownsExpanded = mutableListOf(
                     remember { mutableStateOf(false) }
@@ -90,7 +114,7 @@ fun TopBar() {
                             Text(
                                 modifier = Modifier
                                     .padding(start = 8.dp),
-                                text = "Cut the line")
+                                text = "Cut the path")
                         }
                     }
                     DropdownMenuItem(
@@ -108,16 +132,15 @@ fun TopBar() {
                             Text(
                                 modifier = Modifier
                                     .padding(start = 8.dp),
-                                text = "Merge two connected lines into one"
+                                text = "Merge two connected paths into one"
                             )
                         }
                     }
                 }
-            }
 
-            // End controls
-            Row {
                 IconButton(
+                    modifier = Modifier
+                        .padding(start = 16.dp),
                     onClick = {
 
                     },
