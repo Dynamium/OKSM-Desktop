@@ -9,9 +9,9 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import org.dynamium.oksm.ui.components.Editor
 import org.dynamium.oksm.ui.components.Sidebar
-import org.dynamium.oksm.ui.components.TopBar
+import org.dynamium.oksm.ui.components.editor.Editor
+import org.dynamium.oksm.ui.components.editor.TopBar
 
 @Composable
 fun MainScreen() {
