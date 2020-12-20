@@ -17,7 +17,7 @@ import androidx.compose.ui.unit.dp
     Surface(
         modifier = Modifier
             .fillMaxHeight()
-            .width(128.dp)
+            .width(512.dp)
             .shadow(8.dp),
         color = Color.White
     ) {
