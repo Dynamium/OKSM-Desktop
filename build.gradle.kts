@@ -26,7 +26,7 @@ tasks.withType<KotlinCompile> {
 
 compose.desktop {
     application {
-        mainClass = "org.dynamium.MainKt"
+        mainClass = "org.dynamium.oksm.MainKt"
         nativeDistributions {
             targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
             packageName = "OKSM Desktop"
