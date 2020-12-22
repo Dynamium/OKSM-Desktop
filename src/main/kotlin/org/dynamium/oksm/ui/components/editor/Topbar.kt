@@ -2,6 +2,8 @@
 
 package org.dynamium.oksm.ui.components.editor
 
+import androidx.compose.animation.Crossfade
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
@@ -25,7 +27,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.zIndex
 import org.dynamium.oksm.ui.icons.*
 
-@Composable fun Topbar() {
+@Composable
+fun Topbar() {
     Surface(
         Modifier
             .fillMaxWidth()
@@ -81,7 +84,6 @@ import org.dynamium.oksm.ui.icons.*
                 val areDropdownsExpanded = mutableListOf(
                     remember { mutableStateOf(false) }
                 )
-
                 DropdownMenu(
                     expanded = areDropdownsExpanded[0].value,
                     onDismissRequest = { areDropdownsExpanded[0].value = false },
@@ -180,26 +182,25 @@ import org.dynamium.oksm.ui.icons.*
                             },
                             backgroundColor = Color.White
                         )
-                        IconButton(
-                            onClick = {
-                                isSearchBoxOpened.value = false
-                            },
-                            content = {
-                                Icon(Icons.Outlined.Close)
+                    }
+                }
+
+                Crossfade(current = isSearchBoxOpened, animation = tween(1000)) { state ->
+                    IconButton(
+                        modifier = Modifier
+                            .padding(start = if (!state.value) 16.dp else 0.dp),
+                        onClick = {
+                            isSearchBoxOpened.value = !isSearchBoxOpened.value
+                        }
+                    ) {
+                        Icon(
+                            if (state.value) {
+                                Icons.Outlined.Close
+                            } else {
+                                Icons.Outlined.Search
                             }
                         )
                     }
-                } else {
-                    IconButton(
-                        modifier = Modifier
-                            .padding(start = 16.dp),
-                        onClick = {
-                            isSearchBoxOpened.value = true
-                        },
-                        content = {
-                            Icon(Icons.Outlined.Search)
-                        }
-                    )
                 }
             }
         }
