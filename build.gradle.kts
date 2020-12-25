@@ -4,7 +4,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     kotlin("jvm") version "1.4.21"
-    id("org.jetbrains.compose") version "0.3.0-build136"
+    id("org.jetbrains.compose") version "0.0.0-unmerged-build21"
 }
 
 group = "org.dynamium"
@@ -21,6 +21,7 @@ dependencies {
     implementation("io.github.microutils:kotlin-logging-jvm:2.0.2")
     implementation("org.slf4j:slf4j-api:1.7.5")
     implementation("org.slf4j:slf4j-log4j12:1.7.5")
+    implementation("org.jxmapviewer:jxmapviewer2:2.5")
 }
 
 tasks.withType<KotlinCompile> {

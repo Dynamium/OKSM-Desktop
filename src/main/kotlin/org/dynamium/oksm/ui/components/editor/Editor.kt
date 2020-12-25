@@ -3,19 +3,22 @@
 package org.dynamium.oksm.ui.components.editor
 
 import androidx.compose.desktop.AppWindowAmbient
+import androidx.compose.desktop.SwingPanel
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
 import org.dynamium.oksm.ui.components.editor.sidebar.Sidebar
+import java.awt.Component
+import javax.swing.BoxLayout
+import javax.swing.JButton
+import javax.swing.JPanel
 
 
-@Composable fun Editor() {
+@Composable
+fun Editor() {
     val windowWidth = AppWindowAmbient.current!!.width
 
     val windowHeight = AppWindowAmbient.current!!.height
@@ -36,7 +39,11 @@ import org.dynamium.oksm.ui.components.editor.sidebar.Sidebar
                         .fillMaxSize()
                         .width((windowWidth - 256).dp),
                 ) {
-                    val searchBoxText = remember { mutableStateOf(TextFieldValue("")) }
+                    SwingPanel(
+                        component = swingBox {
+                            println("lol")
+                        },
+                    )
                 }
 
                 // Sidebar
@@ -46,4 +53,26 @@ import org.dynamium.oksm.ui.components.editor.sidebar.Sidebar
             BottomStatusBar()
         }
     }
+}
+
+fun swingBox(action: (() -> Unit)? = null): Component {
+    val box = JPanel()
+    box.layout = BoxLayout(box, BoxLayout.Y_AXIS)
+
+    box.add(actionButton("1. Swing Button: decrement", action))
+    box.add(actionButton("2. Swing Button: decrement", action))
+    box.add(actionButton("3. Swing Button: decrement", action))
+
+    return box
+}
+
+fun actionButton(
+    text: String,
+    action: (() -> Unit)? = null
+): JButton {
+    val button = JButton(text)
+    button.alignmentX = Component.CENTER_ALIGNMENT
+    button.addActionListener { action?.invoke() }
+
+    return button
 }
