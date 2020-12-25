@@ -8,9 +8,9 @@ import androidx.compose.material.Icon
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.outlined.MoreVert
+import androidx.compose.material.icons.outlined.Notifications
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
@@ -21,6 +21,11 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun BottomStatusBar() {
+    val latitudeLocation = mutableStateOf("latitude")
+    val longitudeLocation = mutableStateOf("longitude")
+    val selectedPath = mutableStateOf("selected path")
+
+
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -43,78 +48,25 @@ fun BottomStatusBar() {
                     .padding(start = 16.dp, end = 16.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                LatitudeMarker()
-                LongitudeMarker()
-                SelectedPathMarker()
+                StatusMarker(
+                    icon = vectorXmlResource("drawables/ic_horizontal_distribute_24px.xml"),
+                    data = latitudeLocation.value
+                )
+                StatusMarker(
+                    icon = vectorXmlResource("drawables/ic_vertical_distribute_24px.xml"),
+                    data = longitudeLocation.value
+                )
+                StatusMarker(
+                    icon = Icons.Outlined.Notifications,
+                    data = selectedPath.value
+                )
             }
         }
     }
 }
 
 @Composable
-private fun LatitudeMarker() {
-    Row(
-        modifier = Modifier
-            .fillMaxHeight(),
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        Icon(
-            vectorXmlResource("drawables/ic_horizontal_distribute_24px.xml"),
-            modifier = Modifier
-                .size(18.dp),
-        )
-        Text(
-            text = "latitude location",
-            modifier = Modifier
-                .padding(start = 14.dp),
-        )
-    }
-}
-
-@Composable
-private fun LongitudeMarker() {
-    Row(
-        modifier = Modifier
-            .fillMaxHeight()
-            .padding(start = 14.dp),
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        Icon(
-            vectorXmlResource("drawables/ic_vertical_distribute_24px.xml"),
-            modifier = Modifier
-                .size(18.dp),
-        )
-        Text(
-            text = "longitude location",
-            modifier = Modifier
-                .padding(start = 14.dp),
-        )
-    }
-}
-
-@Composable
-private fun SelectedPathMarker() {
-    Row(
-        modifier = Modifier
-            .fillMaxHeight()
-            .padding(start = 14.dp),
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        Icon(
-            Icons.Outlined.MoreVert,
-            modifier = Modifier
-                .size(18.dp),
-        )
-        Text(
-            text = "selected path",
-            modifier = Modifier
-                .padding(start = 14.dp),
-        )
-    }
-}
-
-@Composable
-private fun Marker(modifier: Modifier = Modifier, icon: ImageVector, text: MutableState<String>) {
+private fun StatusMarker(modifier: Modifier = Modifier, icon: ImageVector, data: String) {
     Row(
         modifier = modifier
             .fillMaxHeight()
@@ -127,7 +79,7 @@ private fun Marker(modifier: Modifier = Modifier, icon: ImageVector, text: Mutab
                 .size(18.dp),
         )
         Text(
-            text = text.value,
+            text = data,
             modifier = Modifier
                 .padding(start = 14.dp),
         )
