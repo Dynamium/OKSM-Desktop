@@ -7,6 +7,8 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.material.Icon
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.MoreVert
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -20,7 +22,7 @@ fun BottomStatusBar() {
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .height(48.dp)
+            .height(38.dp)
             .clickable {
 
             }
@@ -30,7 +32,7 @@ fun BottomStatusBar() {
         Surface(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(bottom = 10.dp),
+                .padding(bottom = 8.dp),
             color = Color.White
         ) {
             Row(
@@ -41,6 +43,7 @@ fun BottomStatusBar() {
             ) {
                 LatitudeMarker()
                 LongitudeMarker()
+                SelectedPathMarker()
             }
         }
     }
@@ -81,6 +84,27 @@ private fun LongitudeMarker() {
         )
         Text(
             text = "longitude location",
+            modifier = Modifier
+                .padding(start = 14.dp),
+        )
+    }
+}
+
+@Composable
+private fun SelectedPathMarker() {
+    Row(
+        modifier = Modifier
+            .fillMaxHeight()
+            .padding(start = 14.dp),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Icon(
+            Icons.Outlined.MoreVert,
+            modifier = Modifier
+                .size(18.dp),
+        )
+        Text(
+            text = "selected path",
             modifier = Modifier
                 .padding(start = 14.dp),
         )
