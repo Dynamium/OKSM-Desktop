@@ -10,10 +10,12 @@ import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.MoreVert
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.vectorXmlResource
 import androidx.compose.ui.unit.dp
 
@@ -105,6 +107,27 @@ private fun SelectedPathMarker() {
         )
         Text(
             text = "selected path",
+            modifier = Modifier
+                .padding(start = 14.dp),
+        )
+    }
+}
+
+@Composable
+private fun Marker(modifier: Modifier = Modifier, icon: ImageVector, text: MutableState<String>) {
+    Row(
+        modifier = modifier
+            .fillMaxHeight()
+            .padding(start = 14.dp),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Icon(
+            icon,
+            modifier = Modifier
+                .size(18.dp),
+        )
+        Text(
+            text = text.value,
             modifier = Modifier
                 .padding(start = 14.dp),
         )
