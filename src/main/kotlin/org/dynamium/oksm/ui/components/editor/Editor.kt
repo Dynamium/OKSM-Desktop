@@ -2,9 +2,8 @@
 
 package org.dynamium.oksm.ui.components.editor
 
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.desktop.AppWindowAmbient
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
@@ -12,25 +11,39 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.input.TextFieldValue
+import androidx.compose.ui.unit.dp
+import org.dynamium.oksm.ui.components.editor.sidebar.Sidebar
 
 
 @Composable fun Editor() {
+    val windowWidth = AppWindowAmbient.current!!.width
+
+    val windowHeight = AppWindowAmbient.current!!.height
+
     Surface(
-        modifier = Modifier
-            .fillMaxSize(),
+        modifier = Modifier,
         color = Color.White
     ) {
-        Row {
-            // Editor
-            Column(
+        Column {
+            Row(
                 modifier = Modifier
-                    .fillMaxSize()
+                    .height((windowHeight - 128).dp),
+                horizontalArrangement = Arrangement.SpaceBetween
             ) {
-                val searchBoxText = remember { mutableStateOf(TextFieldValue("")) }
+                // Editor
+                Column(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .width((windowWidth - 256).dp),
+                ) {
+                    val searchBoxText = remember { mutableStateOf(TextFieldValue("")) }
+                }
+
+                // Sidebar
+                Sidebar()
             }
 
-            // Sidebar
-            Sidebar()
+            BottomStatusBar()
         }
     }
 }
