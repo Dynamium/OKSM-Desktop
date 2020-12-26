@@ -2,7 +2,6 @@
 
 package org.dynamium.oksm.ui.screens
 
-import androidx.compose.desktop.AppManager
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.LinearProgressIndicator
@@ -45,7 +44,6 @@ fun SplashScreen(
             }
         }
     } else {
-        AppManager.focusedWindow?.close()
         afterLoadAction.invoke()
     }
 }

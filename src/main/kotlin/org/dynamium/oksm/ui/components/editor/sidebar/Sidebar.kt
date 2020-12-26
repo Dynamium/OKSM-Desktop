@@ -18,7 +18,7 @@ fun Sidebar() {
     Surface(
         modifier = Modifier
             .fillMaxHeight()
-            .width((512 + 128).dp)
+            .width(384.dp)
             .shadow(8.dp),
         color = Color.White
     ) {

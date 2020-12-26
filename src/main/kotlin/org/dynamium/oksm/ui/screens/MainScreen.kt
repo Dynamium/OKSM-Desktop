@@ -25,3 +25,7 @@ fun MainScreen() {
         }
     }
 }
+
+fun main() {
+
+}

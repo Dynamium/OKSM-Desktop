@@ -45,7 +45,10 @@ fun Inspector() {
 @Composable
 private fun TagsEditor() {
     MaterialTheme {
-        Column {
+        Column(
+            modifier = Modifier
+                .width((316 - 24).dp),
+        ) {
             Surface(
                 modifier = Modifier
                     .width((316 - 24).dp)
@@ -60,7 +63,9 @@ private fun TagsEditor() {
                         imageVector = Icons.Outlined.ArrowDropDown,
                         modifier = Modifier
                             .clip(RoundedCornerShape(4.dp))
-                            .clickable { },
+                            .clickable {
+
+                            },
                     )
                     Text(
                         text = "Tags",

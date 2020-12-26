@@ -4,7 +4,10 @@ package org.dynamium.oksm.ui.components.editor
 
 import androidx.compose.desktop.AppWindowAmbient
 import androidx.compose.desktop.SwingPanel
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.width
 import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -12,16 +15,20 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import org.dynamium.oksm.ui.components.editor.sidebar.Sidebar
 import java.awt.Component
+import java.awt.Dimension
 import javax.swing.BoxLayout
 import javax.swing.JButton
 import javax.swing.JPanel
 
 
+
+
+
 @Composable
 fun Editor() {
-    val windowWidth = AppWindowAmbient.current!!.width
+    val windowWidth = AppWindowAmbient.current.width
 
-    val windowHeight = AppWindowAmbient.current!!.height
+    val windowHeight = AppWindowAmbient.current.height
 
     Surface(
         modifier = Modifier,
@@ -30,19 +37,18 @@ fun Editor() {
         Column {
             Row(
                 modifier = Modifier
-                    .height((windowHeight - 128).dp),
-                horizontalArrangement = Arrangement.SpaceBetween
+                    .height((windowHeight - 128).dp)
             ) {
                 // Editor
                 Column(
                     modifier = Modifier
-                        .fillMaxSize()
-                        .width((windowWidth - 256).dp),
+                        .height(200.dp)
+                        .width((windowWidth - 384).dp),
                 ) {
                     SwingPanel(
                         component = swingBox {
                             println("lol")
-                        },
+                        }
                     )
                 }
 
@@ -58,6 +64,9 @@ fun Editor() {
 fun swingBox(action: (() -> Unit)? = null): Component {
     val box = JPanel()
     box.layout = BoxLayout(box, BoxLayout.Y_AXIS)
+
+    box.preferredSize = Dimension(100, 100)
+
 
     box.add(actionButton("1. Swing Button: decrement", action))
     box.add(actionButton("2. Swing Button: decrement", action))
